@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Are you docuemnted ?"""
-
-
+'''Defines function to_json_string
+'''
 import json
 
 
 def to_json_string(my_obj):
-    """How far now"""
-    return json.dumps(my_obj)
+    '''Returns the json representation of a string object
+    '''
+    return (json.dumps(my_obj))

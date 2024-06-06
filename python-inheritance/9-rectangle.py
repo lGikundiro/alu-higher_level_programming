@@ -1,43 +1,25 @@
 #!/usr/bin/python3
-# class 'Rectangle' that inherits from 'BaseGeometry' (7-base_geometry.py)
-# (task based on 8-rectangle.py)
-"""
-    define a class 'Rectangle' inheriting from 'BaseGeometry'
-"""
+'''creates a class Rectangle from parent class BaseGeometry'''
+
 
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    """
-        representation of 'Rectangle'
-    """
+    '''Rectangle class that inherits from BaseGeometry'''
 
     def __init__(self, width, height):
-        """
-            intialize a new 'Rectangle'
-            Args:
-                width (int): width of the new rectangle
-                height (int): height of the new rectangle
-        """
-
-        super().integer_validator("width", width)
+        '''initialize variables'''
+        self.integer_validator("width", width)
         self.__width = width
-        super().integer_validator("height", height)
+        self.integer_validator("height", height)
         self.__height = height
 
     def area(self):
-        """
-            Return: area of the rectangle
-        """
-
-        return self.__width * self.__height
+        '''function to return the area of a rectangle'''
+        r_area = self.__width * self.__height
+        return r_area
 
     def __str__(self):
-        """
-            Return: print() & str() representation of a 'Rectangle'
-        """
-
-        string = "[" + str(self.__class__.__name__) + "] "
-        string += str(self.__width) + "/" + str(self.__height)
-        return string
+        '''returns Rectangle width/height'''
+        return f"[Rectangle] {self.__width}/{self.__height}"

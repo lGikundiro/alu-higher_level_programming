@@ -1,18 +1,23 @@
 #!/usr/bin/python3
-"""sql injection"""
-
-
+""" no injections this time! """
+import sys
 import MySQLdb
-from sys import argv
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
-                         passwd=argv[2], db=argv[3], charset="utf8")
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC",
-                   (argv[4],))
-    my_list = cursor.fetchall()
-    for j in my_list:
-        print(j)
-    cursor.close()
-    db.close()
+    with MySQLdb.connect(
+            user=sys.argv[1],
+            passwd=sys.argv[2],
+            db=sys.argv[3],
+            host='localhost',
+            port=3306,
+    )as conn:
+        cur = conn.cursor()
+        query = """ SELECT * FROM states
+                    WHERE name = %s
+                    ORDER BY id ASC
+                """
+        cur.execute(query, (sys.argv[4],))
+        names = cur.fetchall()
+        for name in names:
+            print(name)
+        cur.close()

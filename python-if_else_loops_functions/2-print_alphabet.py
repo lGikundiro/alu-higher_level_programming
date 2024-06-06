@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-for char in range(97, 123):
-    print("{:c}".format(char), end='')
+for ascii_code in range(ord('a'), ord('z')+1):
+    print("{}".format(chr(ascii_code)), end='')

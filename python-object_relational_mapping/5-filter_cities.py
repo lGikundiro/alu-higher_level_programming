@@ -1,19 +1,24 @@
 #!/usr/bin/python3
-"""all cities by state"""
-
-
+""" no injections this time! """
+import sys
 import MySQLdb
-from sys import argv
-
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
-                         passwd=argv[2], db=argv[3], charset="utf8")
-    cursor = db.cursor()
-    cursor.execute("SELECT cities.name FROM cities \
-    JOIN states ON cities.state_id = states.id WHERE states.name LIKE %s \
-    ORDER BY cities.id", (argv[4],))
-    my_list = cursor.fetchall()
-    print(", ".join(city[0] for city in my_list))
-    cursor.close()
-    db.close()
+    with MySQLdb.connect(
+            user=sys.argv[1],
+            passwd=sys.argv[2],
+            db=sys.argv[3],
+            host='localhost',
+            port=3306,
+    )as conn:
+        cur = conn.cursor()
+        query = """ SELECT cities.name
+                    FROM states
+                    INNER JOIN cities ON states.id = cities.state_id
+                    WHERE states.name = '{:s}'
+                    ORDER BY cities.id ASC
+                """
+        cur.execute(query.format(sys.argv[4]))
+        cities = cur.fetchall()
+        print(", ".join([city[0] for city in cities]))
+        cur.close()

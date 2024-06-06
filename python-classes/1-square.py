@@ -1,14 +1,13 @@
 #!/usr/bin/python3
-
-"""Define a class Square."""
+"""Create a square """
 
 
 class Square:
-    """Represent a square."""
+    '''
+    Create a square
+        Has a private Instance att: size
+    '''
 
     def __init__(self, size):
-        """Initialize a new Square.
-        Args:
-            size (int): The size of the new square.
-        """
+        ''' init size '''
         self.__size = size

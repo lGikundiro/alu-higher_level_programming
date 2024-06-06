@@ -1,11 +1,15 @@
 #!/usr/bin/python3
-"""Are you docuemnted ?"""
-
-
+'''Defines afunction called load_from_json_file
+'''
 import json
 
 
 def load_from_json_file(filename):
-    """How far now"""
-    with open(filename, "r") as f:
-        return json.load(f)
+    '''Creates an object from a json file
+
+    Args:
+       filename  (str): File object is derived from
+    '''
+    with open(filename, 'r') as f:
+        my_obj = json.load(f)
+    return my_obj

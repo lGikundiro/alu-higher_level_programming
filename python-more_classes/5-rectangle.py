@@ -1,46 +1,36 @@
 #!/usr/bin/python3
-"""Module 5-rectangle
+# class 'Rectangle' that defines a rectangle by:
+# (based on 4-rectangle.py)
+"""
+    define a class 'Rectangle'
 """
 
 
 class Rectangle:
-    """Rectangle class defination."""
+    """
+        rectangle with private instance attributes: 'width' & 'height'
+    """
 
     def __init__(self, width=0, height=0):
-        """Initializes a Rectangle instance.
+        """
+            Args:
+                width (int): width of the new rectangle
+                height (int): height of the new rectangle
         """
         self.width = width
         self.height = height
 
-    def __str__(self):
-        """Returns string representation of rectangle (#).
-        """
-        if self.__height == 0 or self.__width == 0:
-            return ''
-        rectangle_str = ''
-        for i in range(self.__height):
-            for j in range(self.__width):
-                rectangle_str += '#'
-            rectangle_str += '\n'
-        return rectangle_str[:-1]
-
-    def __repr__(self):
-        """Return a string representation of a Rectangle instance
-        """
-        return "Rectangle({}, {})".format(self.__width, self.__height)
-
-    def __del__(self):
-        """Deletes a Rectangle instance."""
-        print("Bye rectangle...")
-
     @property
     def width(self):
-        """Retrieves the width of a Rectangle instance."""
+        """
+            get the width of the rectangle
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Sets the width of a Rectangle instance
+        """
+            validates width as a positive integer
         """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
@@ -50,12 +40,15 @@ class Rectangle:
 
     @property
     def height(self):
-        """Retrieves the height of a Rectangle instance."""
+        """
+            get the height of the rectangle
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Sets the height of a Rectangle instance
+        """
+            validates height as a positive integer
         """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
@@ -64,13 +57,47 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """Calculates the area of a Rectangle instance
         """
-        return self.__width * self.__height
+            Return:
+                    area of the rectangle
+        """
+        return (self.__width * self.__height)
 
     def perimeter(self):
-        """Calculates the perimeter of a Rectangle instance
         """
-        if self.__height == 0 or self.__width == 0:
-            return 0
-        return 2 * (self.__width + self.__height)
+            Return:
+                    perimeter of the rectangle
+        """
+        if self.__width == 0 or self.__height == 0:
+            return (0)
+        return ((self.__width * 2) + (self.__height * 2))
+
+    def __str__(self):
+        """
+            Return:
+                    printable representation of the rectangle(#)
+        """
+        if self.__width == 0 or self.__height == 0:
+            return ("")
+
+        rect = []
+        for i in range(self.__height):
+            [rect.append('#') for j in range(self.__width)]
+            if i != self.__height - 1:
+                rect.append("\n")
+        return ("".join(rect))
+
+    def __repr__(self):
+        """
+            Return:
+                    string representation of the rectangle(#)
+        """
+        rect = "Rectangle(" + str(self.__width)
+        rect += ", " + str(self.__height) + ")"
+        return (rect)
+
+    def __del__(self):
+        """
+            prints message when a rectangle is deleted
+        """
+        print("Bye rectangle...")

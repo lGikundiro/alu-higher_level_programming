@@ -1,21 +1,22 @@
 #!/usr/bin/python3
-"""Square class defination."""
+"""Create a square """
 
 
 class Square:
-    """Square class body."""
+    '''
+    Create a square
+        Has a private Instance att: size
+    '''
 
     def __init__(self, size=0):
-        """Square contructor.
-        Args:
-            size (int): The size of the new square.
-        """
+        ''' init size '''
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         elif size < 0:
             raise ValueError("size must be >= 0")
-        self.__size = size
+
+        self.size = size
 
     def area(self):
-        """Return the new area of the square."""
-        return (self.__size * self.__size)
+        square_area = self.size ** 2
+        return square_area

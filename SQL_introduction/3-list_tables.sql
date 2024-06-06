@@ -1,2 +1,2 @@
--- Show All Tables in X database by Duel
+-- Shows tables of database specified
 SHOW TABLES;

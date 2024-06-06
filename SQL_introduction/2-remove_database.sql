@@ -1,2 +1,2 @@
--- Drop Database by Duel
+-- remove a db
 DROP DATABASE IF EXISTS hbtn_0c_0;
